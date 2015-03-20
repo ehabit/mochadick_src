@@ -1,3 +1,12 @@
+bin/
+.gradle/
+eclipse/.metadata/
+eclipse/.recommenders/
+eclipse/crash-reports/
+eclipse/logs/
+eclipse/saves/
+eclipse/screenshots/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
