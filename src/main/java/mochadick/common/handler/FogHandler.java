@@ -1,11 +1,11 @@
 package mochadick.common.handler;
 /*
- * Mocha Dick FogHandler by Glen Baker <glen@ehab.it>
+ * Mocha Dick Adaptive FogHandler by Glen Baker <glen@ehab.it>
  * 
  * Fog Handler creates fog around players.  The fog occurs
  * if you are in or near an ocean or beach.  The density
  * increases upon oceans and decreases the further away
- * the player is from the fog.
+ * the player is from deep waters.
  * 
  */
 
@@ -33,21 +33,26 @@ public class FogHandler {
 	public void fog(EntityViewRenderEvent.FogDensity event) {
 		if (event.entity instanceof EntityPlayer) {
 			BiomeGenBase biome = event.entity.worldObj.getBiomeGenForCoords((int)event.entity.posX, (int)event.entity.posZ);
-			MochaDick.log.info(biome);
+			// MochaDick.log.info(biome);
 			if (isOcean(biome)) {
 				// Dense fog over oceans
-				event.density = 0.45F;
+				event.density = 0.40F;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 			} else if (isBeach(biome)) {
 				// Mild fog along beaches
 				// Also fog in swamps because they should be spooky
-				event.density = 0.15F;
+				event.density = 0.14F;
+				GL11.glFogi(2917, 2048);
+				event.setCanceled(true);
+			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 5)) {
+				// Mild fog if a beach of ocean is within 5 blocks
+				event.density = 0.14F;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 30)) {
 				// Slight fog if a beach of ocean is within 30 blocks
-				event.density = 0.02F;
+				event.density = 0.04F;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 			}
@@ -69,7 +74,8 @@ public class FogHandler {
 			biome == BiomeGenBase.stoneBeach ||
 			biome == BiomeGenBase.mushroomIslandShore ||
 			biome == BiomeGenBase.swampland ||
-			biome == BiomeGenBase.coldBeach) {
+			biome == BiomeGenBase.coldBeach || 
+			biome == BiomeGenBase.river) {
 			return true;
 		} else {
 			return false;

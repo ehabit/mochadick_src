@@ -26,7 +26,7 @@ public class ItemStoneHarpoon extends Item
 		GameRegistry.registerItem(this, id, RefStrings.MODID);
 		GameRegistry.addRecipe(new ItemStack(this, 1), new Object[] { "X  ", " X ", "  S", 'X', Blocks.stone, 'S', Items.stick });
 		setUnlocalizedName(id);
-		setTextureName("mochadick:StoneHarpoon");
+		setTextureName(RefStrings.MODID + ":StoneHarpoon");
 		setCreativeTab(CreativeTabs.tabCombat);
 	}
 	

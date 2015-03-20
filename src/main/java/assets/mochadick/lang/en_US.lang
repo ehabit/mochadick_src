@@ -1,3 +1,6 @@
 item.StoneHarpoon.name=Stone Harpoon
 item.BabyWhaleBlubber.name=Baby Whale Blubber
-item.WhaleOil.name=Whale Oil
+
+item.WhaleOilBucket.name=Whale Oil Bucket
+fluid.FluidWhaleOil.name=Whale Oil
+tile.BlockWhaleOil.name=Whale Oil
