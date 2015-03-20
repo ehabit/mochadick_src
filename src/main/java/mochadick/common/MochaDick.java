@@ -14,6 +14,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import mochadick.common.handler.FogHandler;
+import mochadick.common.item.ItemBabyWhaleBlubber;
 import mochadick.common.item.ItemStoneHarpoon;
 import mochadick.common.lib.RefStrings;
 
@@ -34,11 +35,13 @@ public class MochaDick {
 	
 	// ItemStack
 	public static ItemStoneHarpoon stoneHarpoon;
+	public static ItemBabyWhaleBlubber babyWhaleBlubber;
 	
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent PreEvent) {
     	log.info("Gathering the goods and supplies...");
     	ItemStoneHarpoon.mainRegistry();
+    	ItemBabyWhaleBlubber.mainRegistry();
     	
     	MochaDick.log.info("Blow the fog horns, she be rollin' in nice and thick tonight!");
     	fogHandler = new FogHandler();
