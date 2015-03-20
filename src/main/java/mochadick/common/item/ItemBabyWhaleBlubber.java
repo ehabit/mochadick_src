@@ -29,7 +29,6 @@ public class ItemBabyWhaleBlubber extends Item {
 	public static void mainRegistry() {
 		int randomid = EntityRegistry.findGlobalUniqueEntityId();
 		ItemBabyWhaleBlubber babyWhaleBlubber = new ItemBabyWhaleBlubber("BabyWhaleBlubber");
-//    	EntityRegistry.registerModEntity(EntityBabyWhaleBlubber.class, "BabyWhaleBlubber", randomid, MochaDick.instance, 120, 3, true );
 	}
 	
 	@Override
