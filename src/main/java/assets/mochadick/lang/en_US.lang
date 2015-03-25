@@ -3,6 +3,11 @@ item.WhaleBlubber.name=Whale Blubber
 item.RawWhaleMeat.name=Raw Whale Meat
 item.WhaleBone.name=Whale Bone
 
+item.WhaleOilLantern.name=Whale Oil Lantern
+tile.BlockWhaleOilLightOff.name=Whale Oil Light
+tile.BlockWhaleOilLightOn.name=Whale Oil Light
+
+
 item.WhaleOilBucket.name=Whale Oil Bucket
 fluid.FluidWhaleOil.name=Whale Oil
 tile.BlockWhaleOil.name=Whale Oil

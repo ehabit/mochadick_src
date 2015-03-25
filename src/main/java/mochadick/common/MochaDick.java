@@ -20,6 +20,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mochadick.common.block.BlockWhaleOil;
+import mochadick.common.block.BlockWhaleOilLight;
 import mochadick.common.fluid.FluidWhaleOil;
 import mochadick.common.handler.FogHandler;
 import mochadick.common.handler.WhaleOilBucketHandler;
@@ -28,6 +29,7 @@ import mochadick.common.item.ItemWhaleBlubber;
 import mochadick.common.item.ItemStoneHarpoon;
 import mochadick.common.item.ItemWhaleBone;
 import mochadick.common.item.ItemWhaleOilBucket;
+import mochadick.common.item.ItemWhaleOilLantern;
 import mochadick.common.lib.RefStrings;
 
 @Mod(modid = RefStrings.MODID, name = RefStrings.NAME, version = RefStrings.VERSION)
@@ -50,6 +52,10 @@ public class MochaDick {
 	public static ItemWhaleBlubber whaleBlubber;
 	public static ItemRawWhaleMeat rawWhaleMeat;
 	public static ItemWhaleBone whaleBone;
+	public static ItemWhaleOilLantern whaleOilLantern;
+	
+	public static BlockWhaleOilLight whaleOilLightOn;
+	public static BlockWhaleOilLight whaleOilLightOff;
 	
 	public static FluidWhaleOil whaleOil;
 	public static BlockWhaleOil blockWhaleOil;
@@ -58,23 +64,31 @@ public class MochaDick {
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent PreEvent) {
     	
-    	// mainRegistry
+    	// Item Registry
     	log.info("Gathering the goods and supplies...");
     	ItemStoneHarpoon.mainRegistry();
     	ItemWhaleBlubber.mainRegistry();
     	ItemRawWhaleMeat.mainRegistry();
     	ItemWhaleBone.mainRegistry();
+    	ItemWhaleOilLantern.mainRegistry();
     	
+    	
+    	// Whale Oil, Whale Oil Bucket, and Whale Oil Fluid Block Registry
     	whaleOil = new FluidWhaleOil("FluidWhaleOil");
     	FluidRegistry.registerFluid(whaleOil);
-    	blockWhaleOil = (BlockWhaleOil) new BlockWhaleOil(whaleOil, Material.water).setBlockName("BlockWhaleOil");
+    	blockWhaleOil = (BlockWhaleOil) new BlockWhaleOil(whaleOil, Material.water);
     	GameRegistry.registerBlock(blockWhaleOil, blockWhaleOil.getUnlocalizedName());
     	whaleOil.setUnlocalizedName(blockWhaleOil.getUnlocalizedName());
 
     	whaleOilBucket = new ItemWhaleOilBucket(blockWhaleOil);
-    	whaleOilBucket.setUnlocalizedName("WhaleOilBucket").setContainerItem(Items.bucket);
     	GameRegistry.registerItem(whaleOilBucket, "WhaleOilBucket");
     	FluidContainerRegistry.registerFluidContainer(whaleOil, new ItemStack(whaleOilBucket), new ItemStack(Items.bucket));
+    	
+    	whaleOilLightOff = new BlockWhaleOilLight(false);
+    	GameRegistry.registerBlock(whaleOilLightOff, whaleOilLightOff.getUnlocalizedName());
+    	whaleOilLightOn = new BlockWhaleOilLight(true);
+    	GameRegistry.registerBlock(whaleOilLightOn, whaleOilLightOn.getUnlocalizedName());
+    	
     	
     
     	// Event Buses
@@ -92,5 +106,6 @@ public class MochaDick {
     @EventHandler
     public void init(FMLInitializationEvent event) {
        log.info("Raisin' the riggin'! Mocha Dick is initializing...");
+       proxy.registerRenderers();
     }
 }

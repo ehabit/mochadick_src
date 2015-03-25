@@ -22,10 +22,9 @@ public class ItemWhaleOilBucket extends ItemBucket {
 	
 	public ItemWhaleOilBucket(Block block) {
 		super(block);
-		String id = "WhaleOilBucket";
 		setCreativeTab(CreativeTabs.tabMisc);
 		setContainerItem(Items.bucket);
-		setUnlocalizedName(id);
+		setUnlocalizedName("WhaleOilBucket");
 		setTextureName(RefStrings.MODID + ":ItemWhaleOilBucket");
 	}
   
