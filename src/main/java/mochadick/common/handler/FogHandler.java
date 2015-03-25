@@ -7,6 +7,8 @@ package mochadick.common.handler;
  * increases upon oceans and decreases the further away
  * the player is from deep waters.
  * 
+ * Daylight reduces fog.
+ * 
  */
 
 import java.util.Arrays;
@@ -29,7 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class FogHandler {
 	
-	private float daylightFactor = 0.10F;
+	private final float dayLightFactor = 0.10F;
+	private float whaleLightFactor;
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
@@ -37,46 +40,40 @@ public class FogHandler {
 		 Boolean isDaytime = MinecraftServer.getServer().worldServers[0].isDaytime();
 		
 		if (event.entity instanceof EntityPlayer) {
+			float antiFog = 0;
+						
+			if (isDaytime) {
+				antiFog = antiFog + dayLightFactor;
+			}
+			
+			
+			
+			
 			BiomeGenBase biome = event.entity.worldObj.getBiomeGenForCoords((int)event.entity.posX, (int)event.entity.posZ);
 			// MochaDick.log.info(biome);
 			if (isOcean(biome)) {
 				// Dense fog over oceans
-				if (isDaytime) {
-					event.density = 0.40F - daylightFactor;
-				} else {
-					event.density = 0.40F;
-				}
+				event.density = 0.30F - antiFog;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 				
 			} else if (isBeach(biome)) {
 				// Mild fog along beaches
 				// Also fog in swamps because they should be spooky
-				if (isDaytime) {
-					event.density = 0.14F - daylightFactor;
-				} else {
-					event.density = 0.14F;
-				}
+				event.density = 0.18F - antiFog;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 				
-			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 5)) {
-				// Mild fog if a beach of ocean is within 5 blocks
-				if (isDaytime) {
-					event.density = 0.14F - daylightFactor;
-				} else {
-					event.density = 0.14F;
-				}
+			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 10)) {
+				// Mild fog if a beach of ocean is within 10 blocks
+				event.density = 0.14F - antiFog;
+
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 				
 			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 30)) {
 				// Slight fog if a beach of ocean is within 30 blocks
-				if (isDaytime) {
-					event.density = 0.04F - daylightFactor;
-				} else {
-					event.density = 0.04F;
-				}
+				event.density = 0.06F - antiFog;
 				GL11.glFogi(2917, 2048);
 				event.setCanceled(true);
 			}

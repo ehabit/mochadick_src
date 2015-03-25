@@ -31,7 +31,6 @@ public class BlockWhaleOil extends BlockFluidClassic {
   public BlockWhaleOil(Fluid fluid, Material material) {
     super(fluid, material);
     setBlockName("BlockWhaleOil");
-    setLightLevel(-1.0F);
     setCreativeTab(CreativeTabs.tabMisc);
   }
   

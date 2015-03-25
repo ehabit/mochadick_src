@@ -23,6 +23,7 @@ import mochadick.common.block.BlockWhaleOil;
 import mochadick.common.fluid.FluidWhaleOil;
 import mochadick.common.handler.FogHandler;
 import mochadick.common.handler.WhaleOilBucketHandler;
+import mochadick.common.item.ItemRawWhaleMeat;
 import mochadick.common.item.ItemWhaleBlubber;
 import mochadick.common.item.ItemStoneHarpoon;
 import mochadick.common.item.ItemWhaleOilBucket;
@@ -46,6 +47,7 @@ public class MochaDick {
 	// ItemStack
 	public static ItemStoneHarpoon stoneHarpoon;
 	public static ItemWhaleBlubber whaleBlubber;
+	public static ItemRawWhaleMeat rawWhaleMeat;
 	
 	public static FluidWhaleOil whaleOil;
 	public static BlockWhaleOil blockWhaleOil;
@@ -58,6 +60,7 @@ public class MochaDick {
     	log.info("Gathering the goods and supplies...");
     	ItemStoneHarpoon.mainRegistry();
     	ItemWhaleBlubber.mainRegistry();
+    	ItemRawWhaleMeat.mainRegistry();
     	
     	whaleOil = new FluidWhaleOil("FluidWhaleOil");
     	FluidRegistry.registerFluid(whaleOil);
