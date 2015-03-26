@@ -78,13 +78,7 @@ public class MochaDick {
     	
     	// Item Registry
     	log.info("Gathering the goods and supplies...");
-    	ItemStoneHarpoon.mainRegistry();
-    	ItemWhaleBlubber.mainRegistry();
-    	ItemRawWhaleMeat.mainRegistry();
-    	ItemWhaleBone.mainRegistry();
-    	ItemWhaleOilLantern.mainRegistry();
-    	
-    	
+
     	// Whale Oil, Whale Oil Bucket, and Whale Oil Fluid Block Registry
     	whaleOil = new FluidWhaleOil("FluidWhaleOil");
     	FluidRegistry.registerFluid(whaleOil);
@@ -100,6 +94,14 @@ public class MochaDick {
     	GameRegistry.registerBlock(whaleOilLightOff, whaleOilLightOff.getUnlocalizedName());
     	whaleOilLightOn = new BlockWhaleOilLight(true);
     	GameRegistry.registerBlock(whaleOilLightOn, whaleOilLightOn.getUnlocalizedName());
+    	
+    	ItemStoneHarpoon.mainRegistry();
+    	ItemWhaleBlubber.mainRegistry();
+    	ItemRawWhaleMeat.mainRegistry();
+    	ItemWhaleBone.mainRegistry();
+    	ItemWhaleOilLantern.mainRegistry();
+    	
+    	
     	
     	packetDispatch.registerPackets();
     }

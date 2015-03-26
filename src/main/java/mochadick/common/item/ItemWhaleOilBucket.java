@@ -30,7 +30,7 @@ public class ItemWhaleOilBucket extends ItemBucket {
   
   public void registerIcons(IIconRegister par1IconRegister)
   {
-    this.itemIcon = par1IconRegister.registerIcon(RefStrings.MODID + ":ItemWhaleOilBucket");
+    this.itemIcon = par1IconRegister.registerIcon(RefStrings.MODID + ":WhaleOilBucket");
   }
   
   public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)

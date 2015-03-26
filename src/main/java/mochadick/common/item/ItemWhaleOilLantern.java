@@ -6,6 +6,8 @@ import mochadick.common.lib.RefStrings;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -25,6 +27,8 @@ public class ItemWhaleOilLantern extends Item {
 		setUnlocalizedName(id);
 		setTextureName(RefStrings.MODID + ":WhaleOilLantern");
 		setCreativeTab(CreativeTabs.tabMisc);
+		GameRegistry.addRecipe(new ItemStack(this, 1), new Object[] { "XXX", "XOX", "XXX", 'X', Blocks.glass, 'O', MochaDick.whaleOilBucket });
+		
 		this.isOn = false;
 		this.lightLevel = 0.5F;
 	}
