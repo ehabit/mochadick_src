@@ -25,7 +25,7 @@ public class ItemWhaleOilBucket extends ItemBucket {
 		setCreativeTab(CreativeTabs.tabMisc);
 		setContainerItem(Items.bucket);
 		setUnlocalizedName("WhaleOilBucket");
-		setTextureName(RefStrings.MODID + ":ItemWhaleOilBucket");
+		setTextureName(RefStrings.MODID + ":WhaleOilBucket");
 	}
   
   public void registerIcons(IIconRegister par1IconRegister)
