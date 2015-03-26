@@ -37,7 +37,7 @@ public class BlockWhaleOilLight extends Block {
 	
 	public void onBlockAdded(World world, int x, int y, int z) {
 		if (!world.isRemote) {
-			if (this.isOn && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
+			if (this.isOn) {
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			} else if (!this.isOn && world.isBlockIndirectlyGettingPowered(x, y, z)) {
 				world.setBlock(x, y, z, MochaDick.whaleOilLightOn, 0, 2);

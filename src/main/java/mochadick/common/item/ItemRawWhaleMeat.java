@@ -19,7 +19,7 @@ public class ItemRawWhaleMeat extends Item {
 
 	public ItemRawWhaleMeat(String id)
 	{
-		maxStackSize = 16;
+		maxStackSize = 64;
 		GameRegistry.registerItem(this, id, RefStrings.MODID);
 		setUnlocalizedName(id);
 		setTextureName(RefStrings.MODID + ":RawWhaleMeat");
@@ -27,8 +27,7 @@ public class ItemRawWhaleMeat extends Item {
 	}
 	
 	public static void mainRegistry() {
-		int randomid = EntityRegistry.findGlobalUniqueEntityId();
-		ItemRawWhaleMeat rawWhaleMeat = new ItemRawWhaleMeat("RawWhaleMeat");
+		MochaDick.rawWhaleMeat = new ItemRawWhaleMeat("RawWhaleMeat");
     }
 	
 	@Override

@@ -19,7 +19,7 @@ public class ItemWhaleBone extends Item {
 
 	public ItemWhaleBone(String id)
 	{
-		maxStackSize = 16;
+		maxStackSize = 64;
 		GameRegistry.registerItem(this, id, RefStrings.MODID);
 		setUnlocalizedName(id);
 		setTextureName(RefStrings.MODID + ":WhaleBone");
@@ -27,8 +27,7 @@ public class ItemWhaleBone extends Item {
 	}
 	
 	public static void mainRegistry() {
-		int randomid = EntityRegistry.findGlobalUniqueEntityId();
-		ItemWhaleBone whaleBone = new ItemWhaleBone("WhaleBone");
+		MochaDick.whaleBone = new ItemWhaleBone("WhaleBone");
     }
 	
 	@Override

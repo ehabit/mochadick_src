@@ -17,6 +17,7 @@ import java.util.List;
 import org.lwjgl.opengl.GL11;
 
 import mochadick.common.MochaDick;
+import mochadick.common.entity.ExtendedPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -37,45 +38,64 @@ public class FogHandler {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
 	public void fog(EntityViewRenderEvent.FogDensity event) {
-		 Boolean isDaytime = MinecraftServer.getServer().worldServers[0].isDaytime();
-		
 		if (event.entity instanceof EntityPlayer) {
-			float antiFog = 0;
-						
-			if (isDaytime) {
-				antiFog = antiFog + dayLightFactor;
-			}
+			ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer) event.entity);
+			Boolean isDaytime = MinecraftServer.getServer().worldServers[0].isDaytime();
+		
+			if (event.entity instanceof EntityPlayer) {
+				float antiFog = 0;
 			
-			
-			
-			
-			BiomeGenBase biome = event.entity.worldObj.getBiomeGenForCoords((int)event.entity.posX, (int)event.entity.posZ);
-			// MochaDick.log.info(biome);
-			if (isOcean(biome)) {
-				// Dense fog over oceans
-				event.density = 0.30F - antiFog;
-				GL11.glFogi(2917, 2048);
-				event.setCanceled(true);
+				antiFog = antiFog + (float) (props.getCurrentWhaleLight()/10);
 				
-			} else if (isBeach(biome)) {
-				// Mild fog along beaches
-				// Also fog in swamps because they should be spooky
-				event.density = 0.18F - antiFog;
-				GL11.glFogi(2917, 2048);
-				event.setCanceled(true);
-				
-			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 10)) {
-				// Mild fog if a beach of ocean is within 10 blocks
-				event.density = 0.14F - antiFog;
+				if (isDaytime) {
+					antiFog = antiFog + dayLightFactor;
+				}
 
-				GL11.glFogi(2917, 2048);
-				event.setCanceled(true);
+//				MochaDick.log.info("AntiFog: " + antiFog + ", Whale Light: " +  props.getCurrentWhaleLight());
+			
+				BiomeGenBase biome = event.entity.worldObj.getBiomeGenForCoords((int)event.entity.posX, (int)event.entity.posZ);
 				
-			} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 30)) {
-				// Slight fog if a beach of ocean is within 30 blocks
-				event.density = 0.06F - antiFog;
-				GL11.glFogi(2917, 2048);
-				event.setCanceled(true);
+				if (isOcean(biome)) {
+					// Dense fog over oceans
+					if (antiFog > 0.30F) {
+						event.density = 0.0F;
+					} else {
+						event.density = 0.30F - antiFog;
+					}
+					GL11.glFogi(2917, 2048);
+					event.setCanceled(true);
+				
+				} else if (isBeach(biome)) {
+					// Mild fog along beaches
+					// Also fog in swamps because they should be spooky
+					if (antiFog > 0.18F) {
+						event.density = 0.0F;
+					} else {
+						event.density = 0.18F - antiFog;
+					}
+					GL11.glFogi(2917, 2048);
+					event.setCanceled(true);
+				
+				} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 10)) {
+					// Mild fog if a beach of ocean is within 10 blocks
+					if (antiFog > 0.14F) {
+						event.density = 0.0F;
+					} else {
+						event.density = 0.14F - antiFog;
+					}
+					GL11.glFogi(2917, 2048);
+					event.setCanceled(true);
+				
+				} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 30)) {
+					// Slight fog if a beach of ocean is within 30 blocks
+					if (antiFog > 0.06F) {
+						event.density = 0.0F;
+					} else {
+						event.density = 0.06F - antiFog;
+					}
+					GL11.glFogi(2917, 2048);
+					event.setCanceled(true);
+				}
 			}
 		}
 	}

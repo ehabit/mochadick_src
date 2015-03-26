@@ -32,7 +32,7 @@ public class ItemStoneHarpoon extends Item
 	
 	public static void mainRegistry() {
 		int randomid = EntityRegistry.findGlobalUniqueEntityId();
-		ItemStoneHarpoon stoneHarpoon = new ItemStoneHarpoon("StoneHarpoon");
+		MochaDick.stoneHarpoon = new ItemStoneHarpoon("StoneHarpoon");
     	EntityRegistry.registerModEntity(EntityStoneHarpoon.class, "StoneHarpoon", randomid, MochaDick.instance, 120, 3, true );
 	}
 	

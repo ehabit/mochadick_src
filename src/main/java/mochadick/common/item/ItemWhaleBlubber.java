@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemWhaleBlubber extends Item {
 	
 	public ItemWhaleBlubber(String id) {
-		maxStackSize = 16;
+		maxStackSize = 64;
 		GameRegistry.registerItem(this, id, RefStrings.MODID);
 		setUnlocalizedName(id);
 		setTextureName(RefStrings.MODID + ":WhaleBlubber");
@@ -27,7 +27,6 @@ public class ItemWhaleBlubber extends Item {
 	}
 	
 	public static void mainRegistry() {
-		int randomid = EntityRegistry.findGlobalUniqueEntityId();
 		ItemWhaleBlubber babyWhaleBlubber = new ItemWhaleBlubber("WhaleBlubber");
 	}
 	
