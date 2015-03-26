@@ -45,13 +45,13 @@ public class FogHandler {
 			if (event.entity instanceof EntityPlayer) {
 				float antiFog = 0;
 			
-				antiFog = antiFog + (float) (props.getCurrentWhaleLight()/10);
+				antiFog = antiFog + (float) props.getCurrentWhaleLight()/100;
 				
 				if (isDaytime) {
 					antiFog = antiFog + dayLightFactor;
 				}
 
-//				MochaDick.log.info("AntiFog: " + antiFog + ", Whale Light: " +  props.getCurrentWhaleLight());
+				//MochaDick.log.info("AntiFog: " + antiFog + ", Whale Light: " +  props.getCurrentWhaleLight());
 			
 				BiomeGenBase biome = event.entity.worldObj.getBiomeGenForCoords((int)event.entity.posX, (int)event.entity.posZ);
 				

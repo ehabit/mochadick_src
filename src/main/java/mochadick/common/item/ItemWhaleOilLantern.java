@@ -56,7 +56,7 @@ public class ItemWhaleOilLantern extends Item {
 		if (isHeld) {
 			if (entity instanceof EntityPlayer) {
 				ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer) entity);
-				props.setWhaleLight(20);
+				props.setWhaleLight(10);
 				//MochaDick.log.info("Set whale light level to " + 8 + "\nCurrent whale light level " + props.getCurrentWhaleLight());
 			}
 		}

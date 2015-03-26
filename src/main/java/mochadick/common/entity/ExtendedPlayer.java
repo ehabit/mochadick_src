@@ -81,7 +81,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 		// only want to update the timer and degen whale light on the server:
 		if (!player.worldObj.isRemote) {
 			if (updateWhaleLightTimer()) {
-				degenWhaleLight(1);
+				if (getCurrentWhaleLight() > 0) {
+					degenWhaleLight(1);
+				}
 			}
 		}
 	}
