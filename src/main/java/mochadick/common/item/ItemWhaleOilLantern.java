@@ -23,7 +23,7 @@ public class ItemWhaleOilLantern extends Item {
 		maxStackSize = 1;
 		GameRegistry.registerItem(this, id, RefStrings.MODID);
 		setUnlocalizedName(id);
-		setTextureName(RefStrings.MODID + ":RedstoneLampActive");
+		setTextureName(RefStrings.MODID + ":WhaleOilLantern");
 		setCreativeTab(CreativeTabs.tabMisc);
 		this.isOn = false;
 		this.lightLevel = 0.5F;
@@ -52,7 +52,6 @@ public class ItemWhaleOilLantern extends Item {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isHeld) {
-		//MochaDick.log.info("Whale Oil Lantern onUpdate called.");
 		if (isHeld) {
 			if (entity instanceof EntityPlayer) {
 				ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer) entity);
