@@ -28,14 +28,12 @@ public class ItemWhaleOilBucket extends ItemBucket {
 		setTextureName(RefStrings.MODID + ":WhaleOilBucket");
 	}
   
-  public void registerIcons(IIconRegister par1IconRegister)
-  {
-    this.itemIcon = par1IconRegister.registerIcon(RefStrings.MODID + ":WhaleOilBucket");
-  }
+	public void registerIcons(IIconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon(RefStrings.MODID + ":WhaleOilBucket");
+	}
   
-  public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-  {
-    par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle, 3));
-  }
+	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle, 3));
+	}
 
 }
