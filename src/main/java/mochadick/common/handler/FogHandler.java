@@ -57,10 +57,10 @@ public class FogHandler {
 				
 				if (isOcean(biome)) {
 					// Dense fog over oceans
-					if (antiFog > 0.30F) {
+					if (antiFog > 0.34F) {
 						event.density = 0.0F;
 					} else {
-						event.density = 0.30F - antiFog;
+						event.density = 0.34F - antiFog;
 					}
 					GL11.glFogi(2917, 2048);
 					event.setCanceled(true);
@@ -68,6 +68,16 @@ public class FogHandler {
 				} else if (isBeach(biome)) {
 					// Mild fog along beaches
 					// Also fog in swamps because they should be spooky
+					if (antiFog > 0.22F) {
+						event.density = 0.0F;
+					} else {
+						event.density = 0.22F - antiFog;
+					}
+					GL11.glFogi(2917, 2048);
+					event.setCanceled(true);
+				
+				} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 10)) {
+					// Mild fog if a beach of ocean is within 10 blocks
 					if (antiFog > 0.18F) {
 						event.density = 0.0F;
 					} else {
@@ -76,22 +86,12 @@ public class FogHandler {
 					GL11.glFogi(2917, 2048);
 					event.setCanceled(true);
 				
-				} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 10)) {
-					// Mild fog if a beach of ocean is within 10 blocks
-					if (antiFog > 0.14F) {
-						event.density = 0.0F;
-					} else {
-						event.density = 0.14F - antiFog;
-					}
-					GL11.glFogi(2917, 2048);
-					event.setCanceled(true);
-				
 				} else if (beachOrOceanInArea(event.entity.worldObj, (int)event.entity.posX, (int)event.entity.posZ, 30)) {
 					// Slight fog if a beach of ocean is within 30 blocks
-					if (antiFog > 0.06F) {
+					if (antiFog > 0.10F) {
 						event.density = 0.0F;
 					} else {
-						event.density = 0.06F - antiFog;
+						event.density = 0.10F - antiFog;
 					}
 					GL11.glFogi(2917, 2048);
 					event.setCanceled(true);

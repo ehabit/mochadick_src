@@ -28,8 +28,7 @@ import mochadick.common.network.AbstractMessage.AbstractClientMessage;
  * those times when you need to send everything.
  *
  */
-public class SyncPlayerPropsMessage extends AbstractClientMessage<SyncPlayerPropsMessage>
-{
+public class SyncPlayerPropsMessage extends AbstractClientMessage<SyncPlayerPropsMessage> {
 	// Previously, we've been writing each field in our properties one at a time,
 	// but that is really annoying, and we've already done it in the save and load
 	// NBT methods anyway, so here's a slick way to efficiently send all of your

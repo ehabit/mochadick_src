@@ -115,7 +115,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 	
 	
 	public final void degenWhaleLight(int amount) {
-		MochaDick.log.info("Reducing player whale light level " + (getCurrentWhaleLight() - amount) );
+		//MochaDick.log.info("Reducing player whale light level " + (getCurrentWhaleLight() - amount) );
 		setWhaleLight(getCurrentWhaleLight() - amount);
 	}
 	
